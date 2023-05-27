@@ -1,0 +1,156 @@
+body {
+  background-color: #9ec8ff;
+}
+
+button {
+    padding: 0px;
+    margin: 0px;
+    height: 35px;
+}
+
+input {
+    padding: 0px;
+    height: 35px;
+    border: 2px solid;
+    
+}
+
+h6 {
+  text-align: center;
+  padding: 5px 5px 0px 0px;
+}
+
+label {
+height: 35px;
+width: 95px;
+color: #ffffff !important;
+background-color: #0d6efd !important;
+}
+
+
+.mb-3 {
+  margin: 0px !important;
+}
+
+.form-control::placeholder {
+  color: #c9c9c9 !important;
+}
+
+.btn01 {
+  width: 100px;
+  text-align: center;
+  font-size: 15px !important;
+  padding: 3px 0px;
+}
+
+/*hovers*/
+.btn01:hover {
+  background-color: #3f8cff !important;
+  border: 1px solid !important;
+  border: #fff6f7 1px solid !important;
+}
+.btn-danger:hover {
+  background-color: #f8828c !important;
+  border: 1px solid !important;
+  border: #fff6f7 1px solid !important;
+}
+
+.btn-success:hover {
+  background-color: #369b6c !important;
+  border: 1px solid !important;
+  border: #fff6f7 1px solid !important;
+}
+
+
+/*actives*/
+.btn01:active{
+  background-color: #cef3ff !important;
+  color: rgb(255, 255, 255) !important;
+  border:  1px solid #a7e9ff !important;
+}
+
+
+.btn-success:active{
+  background-color: #79d67c !important;
+  color: rgb(255, 255, 255) !important;
+  border:  1px solid #c5f7c6 !important;
+}
+
+.btn-danger:active{
+  background-color: #ff8d85 !important;
+  color: rgb(255, 255, 255) !important;
+  border:  1px solid #ffffff;
+}
+
+
+.container-input {
+    padding: 2px;
+}
+
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 2px;
+  width: 100%;
+  padding: 0px 10px !important;
+  background: #9ec8ff;
+}
+
+
+
+  /*ventana emergente*/
+  #popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #9ec8ff;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+    z-index: 9999;
+  }
+
+  /*toast*/
+  .toast {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  
+    max-width: 400px;
+    padding: 6px;
+    background: #cccccc;
+    color: #333333;
+    font-family: sans-serif;
+    text-align: center;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, top 0.2s, visibility 0.2s;
+  }
+  
+  .toast--visible {
+    top: 20px;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .toast--success {
+    background: #00c02b;
+    border-color: #009d23;
+    color: #ffffff;
+  }
+  
+  .toast--error {
+    background: #d50000;
+    border-color: #ba0000;
+    color: #ffffff;
+  }
+  
