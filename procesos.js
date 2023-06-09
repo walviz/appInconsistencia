@@ -15,7 +15,7 @@ function limpiarEntrada(input) {
   });
 }
 
-
+// funcion para evitar ctrl+s
 document.addEventListener("keydown", function(event) {
   if (event.ctrlKey && event.key === "s") {
     event.preventDefault(); // evita el comportamiento predeterminado del navegador
@@ -23,18 +23,9 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
-
-
 // convertir a mayusculas
 function mayus(e) {
   e.value = e.value.toUpperCase(); 
-}
-
-//funcion para pegar
-function pasteFromClipboard() {
-  navigator.clipboard.readText().then(function(text) {
-    document.getElementById("Caso").value = text;
-  });
 }
 
 //fecha para gdi
@@ -45,56 +36,6 @@ function fecha(){
   var dia=fecha.getDate();
   navigator.clipboard.writeText(year+"-0"+mes+"-"+dia);
 }
-
-
-function ejecutaAlerta() {
-  console.log("Hola Mundo");
-}
-
-
-
-
-/*/copiar al portapapeles
-function copyToClipBoard(parametro) {
-  const text = document.getElementById(parametro).value;
-  if (text) {
-    navigator.clipboard.writeText(text);
-  }
-  
-}*/
-////////////pass///////////////////////
-
-//redpass
-function redPass() {
-  navigator.clipboard.writeText(localStorage.getItem("localred")); 
-}
-
-function wtsPass() {
-  navigator.clipboard.writeText(localStorage.getItem("localwts")); 
-}
-
-function m6Pass() {
-  navigator.clipboard.writeText(localStorage.getItem("localm6")); 
-}
-
-function submitPassword() {
-  localStorage.setItem("localred", document.getElementById("passred").value);
-  localStorage.setItem("localwts", document.getElementById("passwts").value);
-  localStorage.setItem("localm6", document.getElementById("passm6").value);
-  hidePopup();
-}
-
-
-function asignarPass() {
-  document.getElementById("popup").style.display = "block";
-}
-
-function hidePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
-
-
 
 // con esta funcion el texto queda selecionado
 function copyToClipBoard(parametro,idbt,idparametro) {
@@ -122,8 +63,6 @@ function borrarTodo(){
     var item=elementos[i];
     document.getElementById(item).value = "";
   }
-  document.getElementById("btGenerar").innerHTML ="Generar";
-  document.getElementById("btMss").innerHTML ="MSS";
   document.getElementById("guiones").selectedIndex = "";
 }
 
@@ -142,7 +81,7 @@ function capturarTodo() {
   document.getElementById("plantilla").value =
     "\n" +
     "Fecha: " + converMonth(fecha.getMonth()) +"-" +fecha.getDate() +"\n" +
-    "ID Caso: " + caso + "\n" +
+    "ID GDI: " + caso + "\n" +
     "ID llamada: " +  llamada + "\n" +
     "ID servicio: " + legado +"\n" +
     "ID Gis: " +gis +"\n" +
@@ -163,7 +102,7 @@ function resGenerar(){
 }
 
 function resMSS(){
-  document.getElementById("btMss").innerHTML ="MSS"
+  document.getElementById("btMssP").innerHTML ="MSS"
 }
 
 
@@ -192,7 +131,7 @@ function capturarTodoM6(){
   let fecha = new Date();
   document.getElementById("plantilla").value =
     "Fecha: " + converMonth(fecha.getMonth()) +"-" +fecha.getDate() +"\n" +
-    "ID Caso: " + caso + "\n" +
+    "ID GDI: " + caso + "\n" +
     "ID llamada: " +  llamada + "\n" +
     "ID servicio: " + legado +"\n" +
     "ID Gis: " +gis +"\n" +
@@ -201,18 +140,9 @@ function capturarTodoM6(){
     "Equipo saliente: " +sale +"\n" +
     "Login: Walvizva";
     copyToClipBoard("plantilla");
-    document.getElementById("btMss").innerHTML ="Generado!";
+    document.getElementById("btMssP").innerHTML ="Generado!";
     setTimeout(resMSS,1000);
 }
-
-function abrirVentana() {
-  var passRed = prompt("Contraseña de Red : ");
-  var passWts = prompt("Contraseña del WTS : ");
-  var passM6 = prompt("Contraseña de M6/MSS: ");
-}
-
-
-
 
 
 //guiones select
@@ -223,6 +153,8 @@ function selecion(){
   let sale = document.getElementById("Sale").value;
   var input = document.getElementById("observaciones");
       
+
+
   switch(opcion){
     case "0":
       document.getElementById("observaciones").value ="Buen día, se ingresa equipo " + entra + " según lo indicado, prueba integrada: ";
@@ -329,6 +261,22 @@ function selecion(){
   }
 
 
+
+
+
+
+
+ 
+
+
+
+
+  
+
+
+
+
+
   /*Posible mejora del case
   function seleccionarObservacion() {
   const opcion = document.getElementById("guiones").value;
@@ -375,4 +323,57 @@ function selecion(){
 
 
 
+}
+
+
+/*LocalStorage*/
+
+// guardar datos en local storage
+var btsave = document.getElementById("btSavePass");
+btsave.addEventListener("click", savePass);
+
+function savePass() {
+  let savered = document.getElementById("passRed").value;
+  let saveWts = document.getElementById("passWts").value;
+  let saveMss = document.getElementById("passMss").value;
+  localStorage.setItem("red", savered);
+  localStorage.setItem("wts", saveWts);
+  localStorage.setItem("mss", saveMss);
+  console.log(localStorage.getItem("red","wts","mss"));
+}
+
+//cargar info en input de opciones
+document.addEventListener("DOMContentLoaded", cargarValores);
+
+function cargarValores() {
+  var savedRed = localStorage.getItem("red");
+  var saveWts = localStorage.getItem("wts");
+  var saveMss = localStorage.getItem("mss");
+  if (savedRed) {
+    document.getElementById("passRed").value = savedRed;
+    
+  }
+  if (saveWts) {
+    document.getElementById("passWts").value = saveWts;
+    
+  }
+  if (saveMss) {
+    document.getElementById("passMss").value = saveMss;
+    
+  }
+}
+
+
+/*funcion asignar contrasenas a los botones*/
+
+document.getElementById("btRed").addEventListener("click", () => asignarCopiar("red"));
+document.getElementById("btMss").addEventListener("click", () => asignarCopiar("mss"));
+document.getElementById("btWts").addEventListener("click", () => asignarCopiar("wts"));
+
+
+function asignarCopiar(valor) {
+  var savedValue = localStorage.getItem(valor);
+  if (savedValue) {
+    navigator.clipboard.writeText(savedValue)
+  }
 }
