@@ -1,13 +1,70 @@
 
+//id de los inputs
+const inputs = ["Caso", "IdLlamada", "Legado", "Gis", "CC", "Entra", "Sale"];
+
+//datos de los botones
+const datos ={
+  sincr:"SINCRONIZACION",
+  inst:"INST-EQUIPO",
+  cambio:"CAMBIO-EQUIPO",
+  reuso:"REUSO-ACCESO",
+  retiro:"RETIRO-EQUIPO",
+  une:"UNE",
+  ceros:"0000000000000000000",
+  link: "http://10.100.66.199:8082/RepEquiposDireccion.aspx",
+  ubicacion:"UBICGENCPE"
+};
+
+//copiar elementos al portapapeles
+inputs.forEach(inputId => {
+  document.getElementById(`bt${inputId}`).addEventListener("click", () => copyToClipBoard(inputId));
+});
+
+
+//eliminar inputs y text areas
+inputs.forEach(inputId => {
+  document.getElementById(`delete${inputId}`).addEventListener("click", () => deliteTextbox(inputId));
+});
+
+document.getElementById("btBorrarTodo").addEventListener("click", borrarTodo);
+
+
+//selecciona todos los botones con la clase btDatos
+const botones = document.querySelectorAll(".btDatos");
+
+// recorre los botones para obtener el id, ya se le asigna el valor segun la const datos
+botones.forEach(boton => {
+  boton.addEventListener("click", (event) => {
+    const idBoton = event.target.id;
+    navigator.clipboard.writeText(datos[idBoton])
+  });
+});
+
+//btn para la fecha
+document.getElementById("fecha").addEventListener("click", () => fecha());
+
+//inputs  para copiar al portapapeles
+document.getElementById("btGuion").addEventListener("click", () => copyToClipBoard("observaciones"));
+
+
+// con esta funcion el texto queda selecionado
+function copyToClipBoard(parametro) {
+  var texto = document.getElementById(parametro);
+  texto.select();
+  document.execCommand("copy");
+}
+
+//text areas
+document.getElementById("btMssP").addEventListener("click", () => capturarTodoM6());
+document.getElementById("btGenerar").addEventListener("click", () => capturarTodo());
 
 
 // eliminar espacios y :
-limpiarEntrada(Legado);
-limpiarEntrada(Gis);
-limpiarEntrada(CC);
-limpiarEntrada(Entra);
-limpiarEntrada(Sale);
-function limpiarEntrada(input) {
+inputs.slice(-6).forEach(elemento => {
+  eliminarEspacios(document.getElementById(elemento));
+});
+
+function eliminarEspacios(input) {
   input.addEventListener("input", e => {
     let string = e.target.value;
     string = string.replace(/[ :	]/g, "");
@@ -15,11 +72,11 @@ function limpiarEntrada(input) {
   });
 }
 
-// funcion para evitar ctrl+s
+// funcion para evitar ctrl+s y/o enviar info a servidor
 document.addEventListener("keydown", function(event) {
   if (event.ctrlKey && event.key === "s") {
     event.preventDefault(); // evita el comportamiento predeterminado del navegador
-    // código para guardar la información o enviarla al servidor
+    // código para guardar la información o enviarla al servidor si se requiere
   }
 });
 
@@ -28,24 +85,13 @@ function mayus(e) {
   e.value = e.value.toUpperCase(); 
 }
 
-//fecha para gdi
+//funcion para obtener la fecha
 function fecha(){
   var fecha = new Date();
   var year = fecha.getFullYear();
   var mes=fecha.getMonth()+1;
   var dia=fecha.getDate();
   navigator.clipboard.writeText(year+"-0"+mes+"-"+dia);
-}
-
-// con esta funcion el texto queda selecionado
-function copyToClipBoard(parametro,idbt,idparametro) {
-  var texto = document.getElementById(parametro);
-  texto.select();
-  document.execCommand("copy");
-  /*document.getElementById(idbt).innerHTML ="Copiado!";
-  setTimeout(function(){
-    document.getElementById(idbt).innerHTML =idparametro
-  },400)*/
 }
 
 //borra un solo texto
@@ -97,14 +143,8 @@ function capturarTodo() {
 }
 
 //funcion notificacion de copiado temporal
-function resGenerar(){
-  document.getElementById("btGenerar").innerHTML ="Generar"
-}
-
-function resMSS(){
-  document.getElementById("btMssP").innerHTML ="MSS"
-}
-
+function resGenerar(){document.getElementById("btGenerar").innerHTML ="Generar"}
+function resMSS(){document.getElementById("btMssP").innerHTML ="MSS"}
 
 // capturar sintexto
 function captura(parametro) {
@@ -113,7 +153,6 @@ function captura(parametro) {
 }
 
 //convertir numero del mes en mes texto
-
 function converMonth(mes){
   const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   return meses[mes];
@@ -144,16 +183,15 @@ function capturarTodoM6(){
     setTimeout(resMSS,1000);
 }
 
-
 //guiones select
+document.getElementById("guiones").addEventListener("change", selecion);
+
 function selecion(){
   let opcion = document.getElementById("guiones").value;
   let entra = document.getElementById("Entra").value;
   let legado = document.getElementById("Legado").value;
   let sale = document.getElementById("Sale").value;
   var input = document.getElementById("observaciones");
-      
-
 
   switch(opcion){
     case "0":
@@ -259,78 +297,12 @@ function selecion(){
       break;
     default: false;
   }
-
-
-
-
-
-
-
- 
-
-
-
-
-  
-
-
-
-
-
-  /*Posible mejora del case
-  function seleccionarObservacion() {
-  const opcion = document.getElementById("guiones").value;
-  const entra = document.getElementById("Entra").value;
-  const legado = document.getElementById("Legado").value;
-  const sale = document.getElementById("Sale").value;
-
-  if (!entra || !legado || !sale) {
-    alert("Debe ingresar todos los valores requeridos.");
-    return;
-  }
-
-  const observaciones = {
-    "0": "Buen día, se ingresa equipo " + ${entra} + " según lo indicado, prueba integrada: ",
-    "1": "Buen día, No se actualiza equipo porque no nos suministra cual es el equipo que sale en reemplazo del que ${entra}, ya que cliente cuenta en oss con la misma cantidad de equipos  que la contratada",
-    "2": "Buen día compa, la MAC O serial o NSCID: " + ${entra} + " que nos suministras NO trae información al respecto en inventario",
-    "3": "Buen día, no se corrige ya que equipo que nos indicas aparecen asignado a otro id servicio xxx  que actualmente no ha sido retirado, se debe legalizar equipos con técnico en terreno.",
-    "4": "Buen día, se crea CR xxx para el correcto cierre del pedido xxx y poder corregir equipos en oss",
-    "5": "Buen día. en nuestra base de datos no registra el ID " + legado + " que nos indicas, se debe validar la información para la corrección del servicio.",
-    "6": "Buen día, no se corrige ya que pedido cuenta con ordenes abiertas en GTC,MSS y no es posible realizar modificaciones hasta que estas estén cerradas, Se debe hacer SS PUMED y esperar el cierre de este.",
-    "7": "Buen día, Desde nuestro grupo no se actualizan equipos de ELITE por lo tanto lo debes escalar por CONSULTA LIDERES",
-    "8": "Buen día, Desde nuestro grupo no se actualizan equipos de Tecnología REDCO/GPON y servicios C3 PYMES  de ANTIOQUIA  asi sea HFC que carguen por nacional, porque el inventario y la infraestructura sigue estando montada en Fénix ATC, por lo tanto lo debes escalar por CONSULTA LIDERES.",
-    "9": "Buen día, compa no nos indicas cuan es el ID del servicio al cual hay que generar la corrección",
-    "10": "Buen día, servicio aparece con los equipos que nos indicas Prueba Integrada xxx , para crear o activar cuentas en verimatrix es con consulta lideres o rescate virtual",
-    "11": "Buen día, no se puede corregir ya que servicio que nos indicas cuenta con pedido de retiro en proceso xxx  con ordenes abiertas en MSS (Baja por solicitud del cliente)",
-    "12": "Buen día, se ingresa equipo " + ${entra} + " que nos indicas al OSS Prueba Integrada  xxx, se debe validar con rescate virtual o lideres si pueden cargar paquete de canales ya que cuenta con pedidos en proceso ",
-    "13": "Buen día, Servicio se encuentra con estado inactivo, servicio retirado",
-    "14": "Buen día, para temas de reaprovisionamiento, registro o permisos de líneas telefónicas debe ser escalado con el área de consulta lideres",
-    "15": "Buen día, compa el nscid xxxx que nos indicas nos registra con un serial totalmente diferente al que nos indicas, se debe validar correctamente la información del equipo o legalizarlo con técnico en terreno",
-    
-  };
-
-  const observacion = observaciones[opcion];
-
-  if (observacion) {
-    document.getElementById("observaciones").value = observacion;
-  } else {
-    alert("La opción seleccionada no es válida.");
-  }
 }
-
-  
-  */ 
-
-
-
-}
-
 
 /*LocalStorage*/
 
 // guardar datos en local storage
-var btsave = document.getElementById("btSavePass");
-btsave.addEventListener("click", savePass);
+document.getElementById("btSavePass").addEventListener("click", savePass);
 
 function savePass() {
   let savered = document.getElementById("passRed").value;
@@ -362,16 +334,12 @@ function cargarValores() {
     
   }
 }
-
-
 /*funcion asignar contrasenas a los botones*/
+document.getElementById("btRed").addEventListener("click", () => asignarLocalStorage("red"));
+document.getElementById("btMss").addEventListener("click", () => asignarLocalStorage("mss"));
+document.getElementById("btWts").addEventListener("click", () => asignarLocalStorage("wts"));
 
-document.getElementById("btRed").addEventListener("click", () => asignarCopiar("red"));
-document.getElementById("btMss").addEventListener("click", () => asignarCopiar("mss"));
-document.getElementById("btWts").addEventListener("click", () => asignarCopiar("wts"));
-
-
-function asignarCopiar(valor) {
+function asignarLocalStorage(valor) {
   var savedValue = localStorage.getItem(valor);
   if (savedValue) {
     navigator.clipboard.writeText(savedValue)

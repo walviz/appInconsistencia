@@ -13,74 +13,73 @@
 
 <body style="background-color:#9ec8ff;">
 
-
             <div class="btn-group container1" role="group" aria-label="Basic example">
-                <button type="button " class="btn btn-primary btn01" id="btRed" value="RED">RED <i class="bi bi-key"></i></button>
-                <button type="button " class="btn btn-primary btn01" id="btMss" value="M6">M6 <i class="bi bi-key"></i></button>
-                <button type="button " class="btn btn-primary btn01" id="btWts" value="WTS">WTS <i class="bi bi-key"></i></button>
+                <button  class="btn btn-primary btn01" id="btRed" value="RED">RED <i class="bi bi-key"></i></button>
+                <button  class="btn btn-primary btn01" id="btMss" value="M6">M6 <i class="bi bi-key"></i></button>
+                <button  class="btn btn-primary btn01" id="btWts" value="WTS">WTS <i class="bi bi-key"></i></button>
              </div>
 
    
             <div class="btn-group container1" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary btn01" onclick="captura('sincronizacion');">SINCR</button>
-                <button type="button" class="btn btn-primary btn01" onclick="captura('instalacion');">INST</button>
-                <button type="button" class="btn btn-primary btn01" onclick="captura('cambio');">CAMBIO</button>
-                <button type="button" class="btn btn-primary btn01" onclick="captura('reuso');">REUSO</button>
-                <button type="button" class="btn btn-primary btn01" onclick="captura('consulta_equipo');">SN/MAC</button>
+                <button  class="btn btn-primary btn01 btDatos" id="sincr">SINCR</button>
+                <button  class="btn btn-primary btn01 btDatos" id="inst">INST</button>
+                <button  class="btn btn-primary btn01 btDatos" id="cambio">CAMBIO</button>
+                <button  class="btn btn-primary btn01 btDatos" id="reuso">REUSO</button>
+                <button  class="btn btn-primary btn01 btDatos" id="link">SN/MAC</button>
               </div>
             <div class="btn-group container1" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary btn01" onclick="captura('une');">UNE</button>
-                <button type="button" class="btn btn-primary btn01" onclick="captura('000');">0000</button>
-                <button type="button" class="btn btn-primary btn01" onclick="captura('retequipo');">RET-EQ</button>
-                <button type="button" class="btn btn-primary btn01" onclick="captura('ubi');">UBICG</button>
-                <button type="button" class="btn btn-primary btn01" onclick="fecha();">FECHA</button>
+                <button  class="btn btn-primary btn01 btDatos" id="une">UNE</button>
+                <button  class="btn btn-primary btn01 btDatos" id="ceros">0000</button>
+                <button  class="btn btn-primary btn01 btDatos" id="retiro">RET-EQ</button>
+                <button  class="btn btn-primary btn01 btDatos" id="ubicacion">UBICG</button>
+                <button  class="btn btn-primary btn01 btDatos" id="fecha">FECHA</button>
             </div>
 
     
         <div class="input-group container-input container1">
-            <button class="btn btn-primary btn01" type="button" onclick="copyToClipBoard('Caso','btCaso','Caso')" id="btCaso">ID GDI</button>
-            <input type="text" class="form-control" placeholder="Numero de caso" aria-label="Recipient's username with two button addons" id="Caso">
-            <button class="btn btn-danger" type="button" onclick="deliteTextbox('Caso')"><i class="bi bi-trash3-fill"></i></button>
+            <button class="btn btn-primary btn01 "  id="btCaso" >ID GDI</button>
+            <input type="text" class="form-control" placeholder="Numero de caso" id="Caso">
+            <button class="btn btn-danger"  id="deleteCaso"><i class="bi bi-trash3-fill"></i></button>
             
         </div>
         <div class="input-group container-input container1">
-            <button class="btn btn-primary btn01" type="button" onclick="copyToClipBoard('IdLlamada','btLlamada','ID llamada')" id="btLlamada">ID llamada</button>
-            <input type="text" class="form-control" placeholder="ID de llamada " aria-label="Recipient's username with two button addons" id="IdLlamada">
-            <button class="btn btn-danger" type="button" onclick="deliteTextbox('IdLlamada')"><i class="bi bi-trash3-fill"></i></button>
+            <button class="btn btn-primary btn01"   id="btIdLlamada">ID llamada</button>
+            <input type="text" class="form-control" placeholder="ID de llamada "  id="IdLlamada">
+            <button class="btn btn-danger"  id="deleteIdLlamada"><i class="bi bi-trash3-fill"></i></button>
             
         </div>
         <div class="input-group container-input container1">
-            <button class="btn btn-primary btn01" type="button" onclick="copyToClipBoard('Legado','btIDServicio','ID servicio')" id="btIDServicio">ID servicio</button>
-            <input type="text" class="form-control" placeholder="Id servicio " aria-label="Recipient's username with two button addons" id="Legado" onkeyup="mayus(this);">
-            <button class="btn btn-danger" type="button" onclick="deliteTextbox('Legado')"><i class="bi bi-trash3-fill" ></i></button>
+            <button class="btn btn-primary btn01"   id="btLegado">ID legado</button>
+            <input type="text" class="form-control" placeholder="Id legado "  id="Legado" onkeyup="mayus(this);">
+            <button class="btn btn-danger"  id="deleteLegado"><i class="bi bi-trash3-fill" ></i></button>
             
         </div>
         <div class="input-group container-input container1">
-            <button class="btn btn-primary btn01" type="button" onclick="copyToClipBoard('Gis','btGis','Gis')" id="btGis">ID GIS</button>
-            <input type="text" class="form-control" placeholder="Gis " aria-label="Recipient's username with two button addons" id="Gis">
-            <button class="btn btn-danger" type="button" onclick="deliteTextbox('Gis')"><i class="bi bi-trash3-fill"></i></button>
+            <button class="btn btn-primary btn01"type="button"  id="btGis">ID GIS</button>
+            <input type="text" class="form-control" placeholder="Gis "  id="Gis">
+            <button class="btn btn-danger"  id="deleteGis"><i class="bi bi-trash3-fill"></i></button>
             
         </div>
         <div class="input-group container-input container1 ">
-            <button class="btn btn-primary btn01" type="button" onclick="copyToClipBoard('CC','btCC','CC')" id="btCC">CC/NIT</button>
-            <input type="text" class="form-control" placeholder="Cedula / nit  " aria-label="Recipient's username with two button addons" id="CC">
-            <button class="btn btn-danger" type="button" onclick="deliteTextbox('CC')"><i class="bi bi-trash3-fill"></i></button>
+            <button class="btn btn-primary btn01"   id="btCC">CC/NIT</button>
+            <input type="text" class="form-control" placeholder="Cedula / nit  "  id="CC">
+            <button class="btn btn-danger"  id="deleteCC"><i class="bi bi-trash3-fill"></i></button>
             
         </div>
         <div class="input-group container-input container1">
-            <button class="btn btn-primary btn01" type="button" onclick="copyToClipBoard('Entra','btEntra','Entra')" id="btEntra">Entra</button>
-            <input type="text" class="form-control" placeholder="Equipo entrante" aria-label="Recipient's username with two button addons" id="Entra" onkeyup="mayus(this);">
-            <button class="btn btn-danger" type="button" onclick="deliteTextbox('Entra')"><i class="bi bi-trash3-fill"></i></button>
+            <button class="btn btn-primary btn01"   id="btEntra">Entra</button>
+            <input type="text" class="form-control" placeholder="Equipo entrante"  id="Entra" onkeyup="mayus(this);">
+            <button class="btn btn-danger"  id="deleteEntra"><i class="bi bi-trash3-fill"></i></button>
             
         </div>
         <div class="input-group container-input container1">
-            <button class="btn btn-primary btn01" type="button" onclick="copyToClipBoard('Sale','btSale','Sale')" id="btSale">Sale</button>
-            <input type="text" class="form-control" placeholder="Equipo saliente" aria-label="Recipient's username with two button addons" id="Sale" onkeyup="mayus(this);">
-            <button class="btn btn-danger" type="button" onclick="deliteTextbox('Sale')"><i class="bi bi-trash3-fill"></i></button>
+            <button class="btn btn-primary btn01"   id="btSale">Sale</button>
+            <input type="text" class="form-control" placeholder="Equipo saliente"  id="Sale" onkeyup="mayus(this);">
+            <button class="btn btn-danger"  id="deleteSale"><i class="bi bi-trash3-fill"></i></button>
          
         </div>
         <div class="input-group container-input container1">
-            <select class="form-select" aria-label="Default select example" onchange="selecion()" id="guiones">
+            <select class="form-select"  id="guiones">
                 <option value="s">--Guiones--</option>
                 <option value=0>Ingreso de equipo</option>
                 <option value="1">Cantidad de equipos</option>
@@ -120,34 +119,30 @@
 
           
             <div class="btn-group container1" role="group" aria-label="Basic example">
-                <button type="button " class="btn btn-danger" onclick="borrarTodo();" id="btBorrarTodo">Borrar </button>
-                <button type="button " class="btn btn-success" onclick="copyToClipBoard('observaciones','btGuion','Guion')" id="btGuion">Guion</button>
-                <button type="button " class="btn btn-primary btn01" onclick="capturarTodoM6()" id="btMssP">MSS</button>
-                <button type="button " class="btn btn-primary btn01" onclick="capturarTodo();" id="btGenerar">Generar</button>
+                <button  class="btn btn-danger" id="btBorrarTodo">Borrar </button>
+                <button  class="btn btn-success" id="btGuion">Guion</button>
+                <button  class="btn btn-primary btn01" id="btMssP">MSS</button>
+                <button  class="btn btn-primary btn01" id="btGenerar">Generar</button>
             </div>   
 
-    
-    
         <div class="container1">
             <textarea class="form-control" id="nota" rows="10" name="nota" placeholder="Notas adicionales"></textarea>
         </div>
 
-
-   
         <div class="mb-3 container1">
             <textarea class="form-control" id="plantilla" rows="5" name="plantilla" readonly></textarea>
         </div>
   
 <!-- menu opciones -->
-    <div class="container">
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-            aria-controls="offcanvasWithBothOptions">Opciones</button>
+    <div class="container1">
+        <button class="btn btn-primary"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions">Opciones <i class="bi bi-gear-fill"></i></button>
     
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Establecer contraseñas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button  class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
     
@@ -157,34 +152,17 @@
                 MSS <i class="bi bi-key"></i>
                 <input type="password" id="passMss" class="form-control" aria-labelledby="passwordHelpBlock">
                 <div id="passwordHelpBlock" class="form-text">
-    
                     WTS <i class="bi bi-key"></i>
                     <input type="password" id="passWts" class="form-control" aria-labelledby="passwordHelpBlock">
-    
-    
     
                     Su contraseña debe tener entre 8 y 20 caracteres, contener letras y números, y no debe contener
                     espacios, o emoji.
                 </div>
-                <button type="button" class="btn btn-primary" id="btSavePass"
-                    data-bs-dismiss="offcanvas">Establecer</button>
+                <button class="btn btn-primary" id="btSavePass" data-bs-dismiss="offcanvas">Establecer <i class="bi bi-check-square"></i></button>
             </div>
         </div>
     </div>
-    
 
-
-    
-    <input id="sincronizacion" type="hidden" value="SINCRONIZACION">
-    <input id="instalacion" type="hidden" value="INST-EQUIPO">
-    <input id="cambio" type="hidden" value="CAMBIO-EQUIPO">
-    <input id="reuso" type="hidden" value="REUSO-ACCESO">
-    <input id="retequipo" type="hidden" value="RETIRO-EQUIPO">
-    <input id="une" type="hidden" value="UNE">
-    <input id="000" type="hidden" value="0000000000000000000">
-    <input id="consulta_equipo" type="hidden" value="http://10.100.66.199:8082/RepEquiposDireccion.aspx">
-    <input id="ubi" type="hidden" value="UBICGENCPE">
-    
    
     <script src="procesos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
