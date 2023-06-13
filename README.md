@@ -8,12 +8,12 @@
 - Permite almacenar en localStorage las contraseñas para ser asignadas a un boton de  facil acceso que se guardarian en el portapapeles.
 
 
-![image](https://github.com/walviz/appInconsistencia/assets/115000755/03fcf212-6056-417f-a241-2deced77451c)
+   ![image](https://github.com/walviz/appInconsistencia/assets/115000755/03fcf212-6056-417f-a241-2deced77451c)
 
 - Esta especie de plantilla esta pensada para trabajar con cualquier navegador a un ancho de 500px, ya que lo uso personalmente en vez del block de notas. que para mi ocupa el mismo espacio.
 
 
-![image](https://github.com/walviz/appInconsistencia/assets/115000755/68c38efa-d1a1-49a2-a614-a895c7f13b50)
+   ![image](https://github.com/walviz/appInconsistencia/assets/115000755/68c38efa-d1a1-49a2-a614-a895c7f13b50)
 
 - Adicionamente vienen prestablecido ciertos guiones de comun respuesta, los cuales algunos tienen la funcion para una ves seleccionado se copie directamente al portapapeles sin usar el boton para copiar las observaciones con el nombre guion en verde.
 
@@ -22,5 +22,5 @@
 - En la parte inferior se encuentra en boton opciones que permite asignar las contraseñas que despues seran usadas por los botones en la aplicacion.
 
 
-![image](https://github.com/walviz/appInconsistencia/assets/115000755/c178d42b-27f3-43e8-b55b-33d96e619a8e)
+   ![image](https://github.com/walviz/appInconsistencia/assets/115000755/c178d42b-27f3-43e8-b55b-33d96e619a8e)
 
