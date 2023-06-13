@@ -134,8 +134,7 @@ function capturarTodo() {
     "Cedula: " +cc +"\n" +
     "Equipo entrante: " +entra +"\n" +
     "Equipo saliente: " +sale +"\n" +
-    "Observaciones: " + observaciones + "\n" +
-    "Login: Walvizva";
+    "Observaciones: " + observaciones ;
   copyToClipBoard("plantilla");
   document.getElementById("btGenerar").innerHTML ="Generado!";
   setTimeout(resGenerar,1000);
@@ -176,8 +175,7 @@ function capturarTodoM6(){
     "ID Gis: " +gis +"\n" +
     "Cedula: " +cc +"\n" +
     "Equipo entrante: " +entra +"\n" +
-    "Equipo saliente: " +sale +"\n" +
-    "Login: Walvizva";
+    "Equipo saliente: " +sale ;
     copyToClipBoard("plantilla");
     document.getElementById("btMssP").innerHTML ="Generado!";
     setTimeout(resMSS,1000);
